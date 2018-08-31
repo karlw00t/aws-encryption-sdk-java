@@ -1,0 +1,3 @@
+FROM aws/codebuild/java:openjdk-8
+
+RUN maven package
