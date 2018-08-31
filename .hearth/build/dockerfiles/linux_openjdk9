@@ -1,3 +1,8 @@
-FROM aws/codebuild/java:openjdk-8
+FROM maven:3-jdk-9
 
-RUN maven package
+RUN mkdir /root/.m2
+WORKDIR /tmp/aws-encryption-sdk-java/
+COPY . .
+RUN mvn dependency:resolve
+RUN rm -fr /tmp/aws-encryption-sdk-java/
+WORKDIR /
